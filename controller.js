@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-    .module('htmlfullmenu', [])
-    .controller('htmlfullmenuController', loadFunction);
+    .module('menubuilder', [])
+    .controller('menubuilderController', loadFunction);
 
   loadFunction.$inject = ['$scope', 'structureService', '$location', '$rootScope', '$translate'];
 
   function loadFunction($scope, structureService, $location, $rootScope, $translate) {
     // Register upper level modules
-    structureService.registerModule($location, $scope, 'htmlfullmenu', $translate.use());
-    // --- Start htmlfullmenuController content ---
+    structureService.registerModule($location, $scope, 'menubuilder', $translate.use());
+    // --- Start menubuilderController content ---
     structureService.launchSpinner('.holds-the-iframe');
     $rootScope.isBusy  = true;
-    var config = $scope.htmlfullmenu.modulescope;
-    var configLang = $scope.htmlfullmenu.modulescopeLang;
+    var config = $scope.menubuilder.modulescope;
+    var configLang = $scope.menubuilder.modulescopeLang;
     var lang = $translate.use().replace('_', '-');
     var iframeConfig = `
     <base target='_parent'></base>
@@ -31,7 +31,7 @@
     structureService.getCurrentModules($location, function(modules){
       console.log("currentModules", modules)
       console.log(modules[modules.length -1]);
-      if(modules[modules.length -1].identifier === "htmlfullmenu"){
+      if(modules[modules.length -1].identifier === "menubuilder"){
         $scope.moduleUniqueId = modules[modules.length -1].uniqueId.split("-")[1];
       }
       console.log($scope.moduleUniqueId);
@@ -219,6 +219,6 @@
         });
     }
         
-    // --- End htmlfullmenuController content ---
+    // --- End menubuilderController content ---
   }
 }());
