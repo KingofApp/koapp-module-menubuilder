@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-    .module('menuBuilder', [])
-    .controller('menuBuilderController', loadFunction);
+    .module('htmlfullmenu', [])
+    .controller('htmlfullmenuController', loadFunction);
 
   loadFunction.$inject = ['$scope', 'structureService', '$location', '$rootScope', '$translate'];
 
   function loadFunction($scope, structureService, $location, $rootScope, $translate) {
     // Register upper level modules
-    structureService.registerModule($location, $scope, 'menuBuilder', $translate.use());
-    // --- Start menuBuilderController content ---
+    structureService.registerModule($location, $scope, 'htmlfullmenu', $translate.use());
+    // --- Start htmlfullmenuController content ---
     structureService.launchSpinner('.holds-the-iframe');
     $rootScope.isBusy  = true;
-    var config = $scope.menuBuilder.modulescope;
-    var configLang = $scope.menuBuilder.modulescopeLang;
+    var config = $scope.htmlfullmenu.modulescope;
+    var configLang = $scope.htmlfullmenu.modulescopeLang;
     var lang = $translate.use().replace('_', '-');
     var iframeConfig = `
     <base target='_parent'></base>
@@ -27,6 +27,15 @@
         }
     </style>
     `;
+
+    structureService.getCurrentModules($location, function(modules){
+      console.log("currentModules", modules)
+      console.log(modules[modules.length -1]);
+      if(modules[modules.length -1].identifier === "htmlfullmenu"){
+        $scope.moduleUniqueId = modules[modules.length -1].uniqueId.split("-")[1];
+      }
+      console.log($scope.moduleUniqueId);
+    })
     
     
     getMenu().then(function(menu){
@@ -88,6 +97,56 @@
         } else {
           $scope.content = iframeConfig + config.code;
         }
+        addContentToShadowDOM("html-menu-builder", $scope.content);
+    }
+    
+    function processHtml(htmlString) {
+        // Create a temporary element to parse the HTML string
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = htmlString;
+
+        // Extract all <script> elements
+        const scripts = tempElement.getElementsByTagName('script');
+        let scriptContents = [];
+
+        while (scripts.length > 0) {
+            // Store the script content in the array
+            scriptContents.push(scripts[0].textContent);
+            // Remove the script element from the DOM
+            scripts[0].parentNode.removeChild(scripts[0]);
+        }
+
+        return [tempElement.innerHTML, scriptContents];
+    }
+
+    function addContentToShadowDOM(containerId, htmlString) {
+        // Get the container element (shadow)
+        const container = document.getElementById(containerId);
+
+        // Prepare scripts
+        const [html, scripts] = processHtml(htmlString);
+
+        // Attach shadow DOM to the container
+        const shadowRoot = container.attachShadow({ mode: 'open' });
+
+        // Create a new template element with the cleaned HTML
+        const templateHtml = document.createElement('template');
+        templateHtml.innerHTML = html;      
+
+        // Append the content of the template html to the shadow root
+        shadowRoot.appendChild(templateHtml.content.cloneNode(true));
+
+        scripts.forEach(script => {
+            const modifiedScript = script.replace(/document/g, 'shadowRoot');
+            const scriptElem = document.createElement('script');
+            scriptElem.textContent = `
+                (() => {
+                    const shadowRoot = document.getElementById('${containerId}').shadowRoot;
+                    ${modifiedScript}
+                })();
+            `;
+            shadowRoot.appendChild(scriptElem.cloneNode(true));
+        });
     }
     
     /*
@@ -99,6 +158,22 @@
     //get links for the fonts
     console.log(getLinks(structureService.getFonts(), "url"));
     */
+    
+    
+    //shadow dom manager
+    function removeScripts(htmlString) {
+        // Create a temporary element to parse the HTML string
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = htmlString;
+
+        // Remove all <script> elements
+        const scripts = tempElement.getElementsByTagName('script');
+        while (scripts.length > 0) {
+            scripts[0].parentNode.removeChild(scripts[0]);
+        }
+
+        return tempElement.innerHTML;
+    }
     
     
     //tools 
@@ -144,6 +219,6 @@
         });
     }
         
-    // --- End menuBuilderController content ---
+    // --- End htmlfullmenuController content ---
   }
 }());

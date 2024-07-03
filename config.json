@@ -4,14 +4,14 @@
     "es-ES": "Menu Builder",
     "en-US": "Menu Builder"
   },
-  "identifier": "menuBuilder",
+  "identifier": "menubuilder",
   "description": {
     "es-ES": "Este módulo te permite crear menús web",
     "en-US": "This module allows you to enter any web code in your app safely."
   },
   "documentation": {
-    "es-ES": "http://resources.kingofapp.com/modules/menuBuilder/docs/es_ES.md",
-    "en-US": "http://resources.kingofapp.com/modules/menuBuilder/docs/en_US.md"
+    "es-ES": "http://resources.kingofapp.com/modules/menubuilder/docs/es_ES.md",
+    "en-US": "http://resources.kingofapp.com/modules/menubuilder/docs/en_US.md"
   },
   "descriptionShort": {
     "es-ES": "Este módulo te permite introducir en tu app cualquier código web de forma segura.",
@@ -34,10 +34,10 @@
     "android",
     "ios"
   ],
-  "view": "http://resources.kingofapp.com/modules/menuBuilder/index.html",
+  "view": "http://resources.kingofapp.com/modules/menubuilder/index.html",
   "files": [
-    "http://resources.kingofapp.com/modules/menuBuilder/controller.js",
-    "http://resources.kingofapp.com/modules/menuBuilder/style.html"
+    "http://resources.kingofapp.com/modules/menubuilder/controller.js",
+    "http://resources.kingofapp.com/modules/menubuilder/style.html"
   ],
   "scope": {
     "code": "Paste here your html code",
@@ -126,10 +126,10 @@
     "dragDrop": true
   },
   "images": {
-    "list": "http://resources.kingofapp.com/modules/menuBuilder/images/list.png",
+    "list": "http://resources.kingofapp.com/modules/menubuilder/images/list.png",
     "screenshots": [],
-    "popover": "http://resources.kingofapp.com/modules/menuBuilder/images/popover.png",
-    "banner": "http://resources.kingofapp.com/modules/menuBuilder/images/banner.png",
-    "logo": "http://resources.kingofapp.com/modules/menuBuilder/images/logo.png"
+    "popover": "http://resources.kingofapp.com/modules/menubuilder/images/popover.png",
+    "banner": "http://resources.kingofapp.com/modules/menubuilder/images/banner.png",
+    "logo": "http://resources.kingofapp.com/modules/menubuilder/images/logo.png"
   }
 }
