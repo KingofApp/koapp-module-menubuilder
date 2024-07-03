@@ -6,7 +6,7 @@
   },
   "identifier": "menuBuilder",
   "description": {
-    "es-ES": "Este módulo te permite introducir en tu app cualquier código web de forma segura.",
+    "es-ES": "Este módulo te permite crear menús web",
     "en-US": "This module allows you to enter any web code in your app safely."
   },
   "documentation": {
@@ -62,16 +62,6 @@
   "libs": [],
   "config": [
     {
-      "key": "code",
-      "type": "textarea",
-      "templateOptions": {
-        "label": "Code:",
-        "rows": 50,
-        "grow": true,
-        "required": true
-      }
-    },
-    {
       "type": "repeatSection",
       "key": "menuItems",
       "templateOptions": {
@@ -90,10 +80,21 @@
       }
     },
     {
+      "key": "code",
+      "type": "textarea",
+      "templateOptions": {
+        "label": "Code:",
+        "rows": 50,
+        "grow": true,
+        "required": true
+      }
+    },
+    {
       "key": "menuTemplate",
       "type": "textarea",
       "templateOptions": {
         "label": "Menu template:",
+        "description": "Add the koaMenu id on the html to insert the menu items",
         "rows": 5,
         "grow": true,
         "required": true
