@@ -1,0 +1,134 @@
+{
+  "name": "Html Full Menu",
+  "name-lang": {
+    "es-ES": "Html Full Menu",
+    "en-US": "Html Full Menu"
+  },
+  "identifier": "menuBuilder",
+  "description": {
+    "es-ES": "Este módulo te permite introducir en tu app cualquier código web de forma segura.",
+    "en-US": "This module allows you to enter any web code in your app safely."
+  },
+  "documentation": {
+    "es-ES": "http://resources.kingofapp.com/modules/menuBuilder/docs/es_ES.md",
+    "en-US": "http://resources.kingofapp.com/modules/menuBuilder/docs/en_US.md"
+  },
+  "descriptionShort": {
+    "es-ES": "Este módulo te permite introducir en tu app cualquier código web de forma segura.",
+    "en-US": "This module allows you to enter any web code in your app safely."
+  },
+  "icon": "room",
+  "type": "A",
+  "version": "1.0.0",
+  "author": "King of App",
+  "category": [
+    "menu",
+    "html",
+    "code",
+    "embed"
+  ],
+  "price": 0,
+  "subscription": false,
+  "canContain": false,
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "view": "http://resources.kingofapp.com/modules/menuBuilder/index.html",
+  "files": [
+    "http://resources.kingofapp.com/modules/menuBuilder/controller.js",
+    "http://resources.kingofapp.com/modules/menuBuilder/style.html"
+  ],
+  "scope": {
+    "code": "Paste here your html code",
+    "menuTemplate":"<a href=\"{{url}}\" class=\"option\">{{text}}</a>",
+    "useTranslate": false
+  },
+  "configChanges": [
+    {
+      "type": "xml",
+      "path": "widget",
+      "data": "<allow-navigation href='*' /> "
+    }
+  ],
+  "scope-lang": {
+    "es-ES": {
+      "codeLang": ""
+    },
+    "en-US": {
+      "codeLang": ""
+    }
+  },
+  "libs": [],
+  "config": [
+    {
+      "key": "code",
+      "type": "textarea",
+      "templateOptions": {
+        "label": "Code:",
+        "rows": 50,
+        "grow": true,
+        "required": true
+      }
+    },
+    {
+      "type": "repeatSection",
+      "key": "menuItems",
+      "templateOptions": {
+        "label": "Items",
+        "btnText": "Add another item to the menu",
+        "fields": [
+          {
+            "type": "select",
+            "key": "path",
+            "templateOptions": {
+              "label": "Path",
+              "required": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "menuTemplate",
+      "type": "textarea",
+      "templateOptions": {
+        "label": "Menu template:",
+        "rows": 5,
+        "grow": true,
+        "required": true
+      }
+    },
+    {
+      "type": "checkbox",
+      "key": "useTranslate",
+      "templateOptions": {
+        "description": "Use Translate",
+        "label": "Use translate"
+      }
+    }
+  ],
+  "config-lang": [
+    {
+      "key": "codeLang",
+      "type": "textarea",
+      "templateOptions": {
+        "label": "Code:",
+        "rows": 50,
+        "grow": true
+      }
+    }
+  ],
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
+  },
+  "images": {
+    "list": "http://resources.kingofapp.com/modules/menuBuilder/images/list.png",
+    "screenshots": [],
+    "popover": "http://resources.kingofapp.com/modules/menuBuilder/images/popover.png",
+    "banner": "http://resources.kingofapp.com/modules/menuBuilder/images/banner.png",
+    "logo": "http://resources.kingofapp.com/modules/menuBuilder/images/logo.png"
+  }
+}

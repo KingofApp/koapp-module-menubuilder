@@ -1,0 +1,14 @@
+{
+  "name": "menuBuilder",
+  "authors": "koa",
+  "description": "",
+  "keywords": [
+    "kingofapp",
+    "module",
+    "menu"
+  ],
+  "license": "MIT",
+  "homepage": "koa",
+  "private": true,
+  "dependencies": {}
+}

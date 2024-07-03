@@ -1,0 +1,45 @@
+<div class="module menuBuilder" ng-controller="menuBuilderController">
+    <!--<iframe srcdoc="{{content}}" ng-style=interactFrame allowtransparency = "true"></iframe>-->
+    <div id="html-menu-builder"></div>
+    <div class="content">
+        <!-- moduleIdentifier + Template - Needs embracing div -->
+        <div ng-include="menuBuilderTemplate" class="template"></div>
+      </div>
+    <div class="holds-the-iframe"></div>
+</div>
+
+
+<style>
+    .menuBuilder{
+        position:relative;
+        width:100%;
+        height: 100%;
+    }
+    .menuBuilder .content{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height: 100%;
+        z-index: 0;
+    }
+    
+   /*.menuBuilder iframe{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height: 100%;
+        background: transparent !important;
+        z-index: 1;
+   }*/
+   
+   .menuBuilder .holds-the-iframe{
+        z-index: -1;
+   }
+   
+   #html-menu-builder{
+    width:100%;
+    height: 100%;
+   }
+</style>
