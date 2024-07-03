@@ -1,8 +1,8 @@
 {
-  "name": "Html Full Menu",
+  "name": "Menu Builder",
   "name-lang": {
-    "es-ES": "Html Full Menu",
-    "en-US": "Html Full Menu"
+    "es-ES": "Menu Builder",
+    "en-US": "Menu Builder"
   },
   "identifier": "menuBuilder",
   "description": {
