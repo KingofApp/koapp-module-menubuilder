@@ -1,45 +1,8 @@
 <div class="module menubuilder" ng-controller="menubuilderController">
-    <!--<iframe srcdoc="{{content}}" ng-style=interactFrame allowtransparency = "true"></iframe>-->
-    <div id="html-menu-builder"></div>
+    <div ng-attr-id="{{menu_builder_id}}" class="menu_builder_overlap" style="width:100%; height: 100%;"></div>
     <div class="content">
         <!-- moduleIdentifier + Template - Needs embracing div -->
         <div ng-include="menubuilderTemplate" class="template"></div>
       </div>
     <div class="holds-the-iframe"></div>
 </div>
-
-
-<style>
-    .menubuilder{
-        position:relative;
-        width:100%;
-        height: 100%;
-    }
-    .menubuilder .content{
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height: 100%;
-        z-index: 0;
-    }
-    
-   /*.menubuilder iframe{
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height: 100%;
-        background: transparent !important;
-        z-index: 1;
-   }*/
-   
-   .menubuilder .holds-the-iframe{
-        z-index: -1;
-   }
-   
-   #html-menu-builder{
-    width:100%;
-    height: 100%;
-   }
-</style>
